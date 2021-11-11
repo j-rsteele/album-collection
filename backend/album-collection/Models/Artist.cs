@@ -12,6 +12,7 @@ namespace album_collection.Models
         public string imageUrl { get; set; }
         public int Age { get; set; }
         public string recordLabel { get; set; }
+        public string Hometown { get; set; }
         public virtual List<Album> Albums { get; set; }
     }
 }
