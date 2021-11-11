@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace album_collection.Models
 {
-    public class Songs
+    public class Song
     {
     }
 }

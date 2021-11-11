@@ -17,7 +17,7 @@ namespace album_collection.Models
 
         public string review { get; set; }
 
-        public virtual List<Songs> songs { get; set; }
+        public virtual List<Song> songs { get; set; }
     }
 }
 
