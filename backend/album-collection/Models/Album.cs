@@ -9,13 +9,14 @@ namespace album_collection.Models
     {
         public int Id { get; set; }
 
+        public int artistId { get; set; }
         public string Title { get; set; }
 
         public string Image { get; set; }
 
-        public string Artist { get; set; }
+        public virtual Artist Artist { get; set; }
 
-        public string Review { get; set; }
+        public virtual List<Review> reviews { get; set; }
         public string recordLabel { get; set; }
 
         public virtual List<Song> songs { get; set; }

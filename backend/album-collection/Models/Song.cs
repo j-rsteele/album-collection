@@ -9,6 +9,9 @@ namespace album_collection.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Album { get; set; }
-    }
+
+        public int albumId { get; set; }
+        public virtual Album Album { get; set; }
+
+}
 }
