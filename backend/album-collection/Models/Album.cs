@@ -7,30 +7,17 @@ namespace album_collection.Models
 {
     public class Album
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        public string title { get; set; }
+        public string Title { get; set; }
 
-        //public string imageID
+        public string Image { get; set; }
 
-        public string artist { get; set; }
+        public string Artist { get; set; }
 
-        public string review { get; set; }
+        public string Review { get; set; }
+        public string recordLabel { get; set; }
 
-        public virtual List<Songs> songs { get; set; }
+        public virtual List<Song> songs { get; set; }
     }
 }
-
-album
-id
-title
-image
-artist
-songs (either as a string to be separated, or see below)
-reviews
-record label
-
-song
-id
-title
-album
