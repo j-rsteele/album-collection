@@ -28,6 +28,7 @@ namespace album_collection
         {
             // handles circular reference error -Jesse 
             services.AddControllers().AddNewtonsoftJson(o => o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddDbContext<AlbumContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
