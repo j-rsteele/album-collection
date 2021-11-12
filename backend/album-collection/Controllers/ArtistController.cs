@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using album_collection.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +8,43 @@ using System.Threading.Tasks;
 
 namespace album_collection.Controllers
 {
-    public class ArtistController : Controller
+    public class ArtistsController : DbContext
     {
-        public IActionResult Index()
+        private AlbumContext _db;
+        public ArtistsController(AlbumContext db)
         {
-            return View();
+            _db = db;
+        }
+        [HttpGet]
+        public ActionResult<IEnumerable<Artist>> Get()
+        {
+            return _db.Artists.ToList();
+        }
+        [HttpPost]
+        public ActionResult<Artist> Post([FromBody] Artist artist)
+        {
+            _db.Artists.Add(artist);
+            _db.SaveChanges();
+
+            return artist;
+        }
+        [HttpPut("{id}")]
+        public ActionResult<Artist> Put(int id, [FromBody] Artist artist)
+        {
+            if (artist.Id == id)
+            {
+                _db.Artists.Update(artist);
+                _db.SaveChanges();
+            }
+            return artist;
+        }
+        [HttpDelete("{id}")]
+        public ActionResult<IEnumerable<Artist>> Delete(int id)
+        {
+            var artist = _db.Artists.Find(id);
+            _db.Artists.Remove(artist);
+            _db.SaveChanges();
+            return _db.Artists.ToList();
         }
     }
 }
