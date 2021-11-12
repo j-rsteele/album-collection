@@ -19,7 +19,6 @@ namespace album_collection.Controllers
             this._context = context;
         }
 
-
         [HttpGet]
         public ActionResult<IEnumerable<Album>> Get()
         {
@@ -48,8 +47,15 @@ namespace album_collection.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put([FromBody])
+        public ActionResult<Album> Put(int id, [FromBody]Album album)
         {
+            if(album.Id == id)
+            {
+                _context.Albums.Update(album);
+                _context.SaveChanges();
+            }
+
+            return album;
         }
 
 
