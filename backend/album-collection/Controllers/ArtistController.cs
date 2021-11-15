@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace album_collection.Controllers
 {
-    public class ArtistsController : DbContext
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ArtistController : ControllerBase
     {
         private AlbumContext _db;
-        public ArtistsController(AlbumContext db)
+        public ArtistController(AlbumContext db)
         {
             _db = db;
         }
