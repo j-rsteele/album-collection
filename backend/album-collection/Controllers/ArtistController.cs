@@ -23,22 +23,22 @@ namespace album_collection.Controllers
             return _db.Artists.ToList();
         }
         [HttpPost]
-        public ActionResult<Artist> Post([FromBody] Artist artist)
+        public ActionResult<IEnumerable<Artist>> Post([FromBody] Artist artist)
         {
             _db.Artists.Add(artist);
             _db.SaveChanges();
 
-            return artist;
+            return _db.Artists.ToList();
         }
         [HttpPut("{id}")]
-        public ActionResult<Artist> Put(int id, [FromBody] Artist artist)
+        public ActionResult<IEnumerable<Artist>> Put(int id, [FromBody] Artist artist)
         {
             if (artist.Id == id)
             {
                 _db.Artists.Update(artist);
                 _db.SaveChanges();
             }
-            return artist;
+            return _db.Artists.ToList();
         }
         [HttpDelete("{id}")]
         public ActionResult<IEnumerable<Artist>> Delete(int id)

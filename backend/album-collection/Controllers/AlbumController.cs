@@ -23,17 +23,16 @@ namespace album_collection.Controllers
         public ActionResult<IEnumerable<Album>> Get()
         {
             return _context.Albums.ToList();
-            
         }
 
         [HttpPost]
-        public ActionResult<Album> Post([FromBody] Album album)
+        public ActionResult<IEnumerable<Album>> Post([FromBody] Album album)
         {
             var albumTable = _context.Albums;
             albumTable.Add(album);
             _context.SaveChanges();
 
-            return album;         
+            return _context.Albums.ToList();         
         }
 
         [HttpDelete("{id}")]
@@ -47,7 +46,7 @@ namespace album_collection.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Album> Put(int id, [FromBody]Album album)
+        public ActionResult<IEnumerable<Album>> Put(int id, [FromBody]Album album)
         {
             if(album.Id == id)
             {
@@ -55,7 +54,7 @@ namespace album_collection.Controllers
                 _context.SaveChanges();
             }
 
-            return album;
+            return _context.Albums.ToList();
         }
 
 
