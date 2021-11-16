@@ -1,5 +1,5 @@
-import albums from "./Albums/albums"
+import artists from "./Artists/artists";
 
 export default() => {
-    albums.display();
+    artists.display();
 }
