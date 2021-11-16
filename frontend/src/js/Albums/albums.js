@@ -1,15 +1,25 @@
 import api from "../APIcaller/API"
 const content=document.getElementById("content");
-const title=document.getElementById("Title");
-title.innerText="Albums";
+const title=document.getElementById("title");
 
-api.getRequest("https://localhost:44313/api/artist",displayAlbums(data))
-function displayAlbums(data)
-{
-    content.innerHTML = `
-        <ol>
-        </ol>
-    
-    `
+export default{
+    display,
 }
+
+function display()
+{
+    title.innerText="Albums";
+    api.getRequest("https://localhost:44313/api/album", displayAlbums);
+    
+    function displayAlbums(data)
+    {
+        content.innerHTML = 
+        `
+        <ol>
+            <li> Hello </li>
+        </ol>
+        `
+    }
+}
+
 
