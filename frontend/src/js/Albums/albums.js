@@ -16,7 +16,7 @@ function display()
         content.innerHTML = 
         `
         <ol>
-            <li> Hello </li>
+            ${data.map(album => "<li> Title: "+album.title+"</li>").join("")}
         </ol>
         `
     }
