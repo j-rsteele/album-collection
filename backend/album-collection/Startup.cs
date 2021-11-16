@@ -28,6 +28,11 @@ namespace album_collection
             // handles circular reference error -Jesse 
             services.AddControllers().AddNewtonsoftJson(o => o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddDbContext<AlbumContext>();
+
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+             {
+                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+             }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +48,8 @@ namespace album_collection
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("MyPolicy");
 
             app.UseRouting();
 
