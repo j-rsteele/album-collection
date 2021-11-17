@@ -22,6 +22,12 @@ namespace album_collection.Controllers
         {
             return _db.Artists.ToList();
         }
+        [HttpGet("{id}")]
+        public ActionResult<Artist> Get(int id)
+        {
+            Artist artist = _db.Artists.Find(id);
+            return artist;
+        }
         [HttpPost]
         public ActionResult<IEnumerable<Artist>> Post([FromBody] Artist artist)
         {

@@ -25,6 +25,13 @@ namespace album_collection.Controllers
             return _context.Albums.ToList();
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<Album> Get(int id)
+        {
+            Album album = _context.Albums.Find(id);
+            return album;
+        }
+
         [HttpPost]
         public ActionResult<IEnumerable<Album>> Post([FromBody] Album album)
         {

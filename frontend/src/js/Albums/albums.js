@@ -4,8 +4,6 @@ const title=document.getElementById("title");
 
 export default{
     displayAllAlbums,
-    viewAddAlbum,
-    SetupSaveButton,
 }
 
 export function viewAddAlbum()
@@ -17,28 +15,23 @@ export function viewAddAlbum()
         Artist <select id="listArtists"> </select>
         ImageURL <input type="text" value="" id="album_image" />
         Record Label <input type="text" value="" id="album_recordLabel" />
-    <button id="btnSaveAlbum">Save Album</button>
+        <button id="btnSaveAlbum">Save Album</button>
     `
     const artistsSelectList = document.getElementById("listArtists")
+
+    //populates select list for artist
     api.getRequest("https://localhost:44313/api/artist", artists =>
         {
-            // artistsSelectList.innerHTML=
-            // `
-            //     ${artists.map(artist => '<option value="'+artist.id+'">'+artist.name+'</option>').join("")}
-            // `
             artists.forEach(artist =>
             {
                 var option = document.createElement("option");
                 option.value = artist.id;
-                option.innerText = artist.name;
+                option.text = artist.name;
                 artistsSelectList.appendChild(option);
-
-            });
+            }); 
         });
-
     SetupSaveButton(artistsSelectList)
 }
-
 
 function displayAllAlbums()
 {
@@ -50,11 +43,23 @@ function displayAllAlbums()
         `
         <ol>
             ${data.map(album => '<li>'+album.title+'</li><ul><li> Artist: '+album.artist.name+'</li><li> Record Label: '+album.recordLabel+'</li><li> Songs: '+album.song+'</li><li> Reviews: '+album.review+'</li><li> Image: ""</li></ul><button class="deleteAlbum" albumID='+album.id+'>Delete</button>').join("")}
+
+            ${data.map(album => '<li>'+album.title+'</li><button class="editAlbum" albumID='+album.id+'>Edit</button><button class="deleteAlbum" albumID='+album.id+'>Delete</button>').join("")}
+
         </ol>
         <button id="btnAddAlbum">Add Album</button>
         `
         let btnAddAlbum = document.getElementById("btnAddAlbum");
         btnAddAlbum.addEventListener("click", viewAddAlbum);
+        let editButtons = Array.from(document.getElementsByClassName("editAlbum"));
+        editButtons.forEach(editButton =>
+        {
+            editButton.addEventListener("click", function()
+            {
+                let id = editButton.getAttribute("albumId");
+                viewEditAlbum(id);
+             });
+         });
         let deleteButtons = Array.from(document.getElementsByClassName("deleteAlbum"));
         deleteButtons.forEach(deleteButton =>
         {
@@ -63,12 +68,10 @@ function displayAllAlbums()
                 let id = deleteButton.getAttribute("albumId");
                 console.log(id);
                 SetupDeleteAlbum(id);
-            });
-        });
+             });
+         });
     }
 }
-
-
 
 export function SetupSaveButton(selectedArtist)
 {
@@ -79,7 +82,8 @@ export function SetupSaveButton(selectedArtist)
         let albumImage = document.getElementById("album_image").value;
         let albumRecordLabel = document.getElementById("album_recordLabel").value;
 
-        const Album = {
+        const Album = 
+        {
             Title: albumTitle,
             Image: albumImage,
             RecordLabel: albumRecordLabel,
@@ -90,14 +94,58 @@ export function SetupSaveButton(selectedArtist)
     });
 }
 
+function viewEditAlbum(id)
+{
+    title.innerText = "Edit Album";
+    let selectedArtist;
+    api.getRequest("https://localhost:44313/api/album/"+id, album =>
+        {
+            content.innerHTML =
+            `
+                Title <input type="text" value="${album.title}" id="album_title" />
+                Artist <select id="listArtists"> </select>
+                ImageURL <input type="text" value="${album.image}" id="album_image" />
+                Record Label <input type="text" value="${album.RecordLabel}" id="album_recordLabel" />
+                <button id="btnSaveEdit">Save Album</button>
+            `
+            const artistsSelectList = document.getElementById("listArtists")
+            api.getRequest("https://localhost:44313/api/artist", artists =>
+            {
+                artists.forEach(artist =>
+                    {
+                        var option = document.createElement("option");
+                        option.value = artist.id;
+                        option.text = artist.name;
+                        if(artist.id==album.artistId)
+                            {option.setAttribute("selected","");
+                            selectedArtist = album.artistId
+                            }
+                        artistsSelectList.appendChild(option);
+                    });
+
+            });
+            let btnSaveEdit = document.getElementById("btnSaveEdit");
+            btnSaveEdit.addEventListener("click", function()
+            {
+                let albumTitle = document.getElementById("album_title").value;
+                let albumImage = document.getElementById("album_image").value;
+                let albumRecordLabel = document.getElementById("album_recordLabel").value;
+
+                const Album = 
+                {
+                    Title: albumTitle,
+                    Image: albumImage,
+                    recordLabel: albumRecordLabel,
+                    artistId: String(selectedArtist)
+                }
+                console.log(Album)
+                api.putRequest("https://localhost:44313/api/album/",id, Album, displayAllAlbums);
+            });
+        });    
+}
+
 export function SetupDeleteAlbum(id)
 {
     api.deleteRequest("https://localhost:44313/api/album/", id, displayAllAlbums);
-    //let btnDeleteAlbum = document.getElementById("btnDeleteAlbum");
-    // albumDeleteButtons.forEach(deleteButton => {
-    //     deleteButton.addEventListener("click", function()
-    //     {
-    //         let id = deleteButton.getAttribute("albumId");
-    //     });
-    // });
+   
 }
