@@ -13,16 +13,15 @@ export function viewAddAlbum()
     title.innerText="Add Album";
     content.innerHTML =
     `
-        <input type="text" value="" id="album_title" />
-        <input type="text" value="" id="album_artist" />
-        <input type="text" value="" id="album_image" />
-        <input type="text" value="" id="album_recordLabel" />
+        Title <input type="text" value="" id="album_title" />
+        Artist <input type="text" value="" id="album_artist" />
+        ImageURL <input type="text" value="" id="album_image" />
+        Record Label <input type="text" value="" id="album_recordLabel" />
     <button id="btnSaveAlbum">Save Album</button>
     `
     SetupSaveButton()
 
 }
-
 
 function displayAllAlbums()
 {

@@ -3,10 +3,10 @@ const content=document.getElementById("content");
 const title=document.getElementById("title");
 
 export default{
-    display,
+    viewArtists,
 }
 
-function display(){
+function viewArtists(){
     title.innerText="Artist";
     api.getRequest("https://localhost:44313/api/artist", displayArtist);
 
