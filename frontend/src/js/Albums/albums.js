@@ -42,7 +42,10 @@ function displayAllAlbums()
         content.innerHTML =
         `
         <ol>
+            ${data.map(album => '<li>'+album.title+'</li><ul><li> Artist: '+album.artist.name+'</li><li> Record Label: '+album.recordLabel+'</li><li> Songs: '+album.song+'</li><li> Reviews: '+album.review+'</li><li> Image: ""</li></ul><button class="deleteAlbum" albumID='+album.id+'>Delete</button>').join("")}
+
             ${data.map(album => '<li>'+album.title+'</li><button class="editAlbum" albumID='+album.id+'>Edit</button><button class="deleteAlbum" albumID='+album.id+'>Delete</button>').join("")}
+
         </ol>
         <button id="btnAddAlbum">Add Album</button>
         `
