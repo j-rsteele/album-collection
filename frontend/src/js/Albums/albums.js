@@ -130,6 +130,7 @@ function viewEditAlbum(id)
 
                 const Album = 
                 {
+                    Id: id,
                     Title: albumTitle,
                     Image: albumImage,
                     recordLabel: albumRecordLabel,
