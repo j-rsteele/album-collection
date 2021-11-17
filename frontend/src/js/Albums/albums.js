@@ -5,7 +5,7 @@ const title=document.getElementById("title");
 export default{
     displayAllAlbums,
     viewAddAlbum,
-    SetupSaveButton
+    SetupSaveButton,
 }
 
 export function viewAddAlbum()
@@ -32,12 +32,13 @@ export function viewAddAlbum()
                 option.value = artist.id;
                 option.innerText = artist.name;
                 artistsSelectList.appendChild(option);
-                
-            }); 
+
+            });
         });
 
     SetupSaveButton(artistsSelectList)
 }
+
 
 function displayAllAlbums()
 {
@@ -48,14 +49,44 @@ function displayAllAlbums()
         content.innerHTML =
         `
         <ol>
-            ${data.map(album => "<li> Title: "+album.title+"</li>").join("")}
+            ${data.map(album => '<li>'+album.title+'</li><button class="deleteAlbum" albumID='+album.id+'>Delete</button>').join("")}
         </ol>
         <button id="btnAddAlbum">Add Album</button>
         `
         let btnAddAlbum = document.getElementById("btnAddAlbum");
         btnAddAlbum.addEventListener("click", viewAddAlbum);
+        let deleteButtons = Array.from(document.getElementsByClassName("deleteAlbum"));
+        deleteButtons.forEach(deleteButton =>
+        {
+            deleteButton.addEventListener("click", function()
+            {
+                let id = deleteButton.getAttribute("albumId");
+                console.log(id);
+                SetupDeleteAlbum(id);
+            });
+        });
     }
 }
+
+
+
+// function displayAllAlbums()
+// {
+//     title.innerText="Albums";
+//     api.getRequest("https://localhost:44313/api/album", displayAlbums);
+//     function displayAlbums(data)
+//     {
+//         content.innerHTML =
+//         `
+//         <ol>
+//             ${data.map(album => '<li> Title: '+album.title+'</li><button class="deleteButtons" albumId='+album.id+'>Delete</button>').join("")}
+//         </ol>
+//         <button id="btnAddAlbum">Add Album</button>
+//         `
+//         let btnAddAlbum = document.getElementById("btnAddAlbum");
+//         btnAddAlbum.addEventListener("click", viewAddAlbum);
+//     }
+// }
 
 export function SetupSaveButton(selectedArtist)
 {
@@ -75,4 +106,16 @@ export function SetupSaveButton(selectedArtist)
         console.log(Album)
         api.postRequest("https://localhost:44313/api/album", Album, displayAllAlbums);
     });
+}
+
+export function SetupDeleteAlbum(id)
+{
+    api.deleteRequest("https://localhost:44313/api/album/", id, displayAllAlbums);
+    //let btnDeleteAlbum = document.getElementById("btnDeleteAlbum");
+    // albumDeleteButtons.forEach(deleteButton => {
+    //     deleteButton.addEventListener("click", function()
+    //     {
+    //         let id = deleteButton.getAttribute("albumId");
+    //     });
+    // });
 }
