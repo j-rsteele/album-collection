@@ -18,6 +18,7 @@ export function viewAddAlbum()
         <button id="btnSaveAlbum">Save Album</button>
     `
     const artistsSelectList = document.getElementById("listArtists")
+
     //populates select list for artist
     api.getRequest("https://localhost:44313/api/artist", artists =>
         {
@@ -36,13 +37,12 @@ function displayAllAlbums()
 {
     title.innerText="Albums";
     api.getRequest("https://localhost:44313/api/album", displayAlbums);
-
     function displayAlbums(data)
     {
         content.innerHTML =
         `
         <ol>
-            ${data.map(album => '<li>'+album.title+'</li><button class="editAlbum" albumID='+album.id+'>Edit</button>').join("")}
+            ${data.map(album => '<li>'+album.title+'</li><button class="editAlbum" albumID='+album.id+'>Edit</button><button class="deleteAlbum" albumID='+album.id+'>Delete</button>').join("")}
         </ol>
         <button id="btnAddAlbum">Add Album</button>
         `
@@ -55,10 +55,19 @@ function displayAllAlbums()
             {
                 let id = editButton.getAttribute("albumId");
                 viewEditAlbum(id);
-            });
-        });
+             });
+         });
+        let deleteButtons = Array.from(document.getElementsByClassName("deleteAlbum"));
+        deleteButtons.forEach(deleteButton =>
+        {
+            deleteButton.addEventListener("click", function()
+            {
+                let id = deleteButton.getAttribute("albumId");
+                console.log(id);
+                SetupDeleteAlbum(id);
+             });
+         });
     }
-
 }
 
 export function SetupSaveButton(selectedArtist)
@@ -77,6 +86,7 @@ export function SetupSaveButton(selectedArtist)
             RecordLabel: albumRecordLabel,
             artistId: selectedArtist.value
         }
+        console.log(Album)
         api.postRequest("https://localhost:44313/api/album", Album, displayAllAlbums);
     });
 }
@@ -128,7 +138,11 @@ function viewEditAlbum(id)
                 console.log(Album)
                 api.putRequest("https://localhost:44313/api/album/",id, Album, displayAllAlbums);
             });
-        });
+        });    
+}
 
-    
+export function SetupDeleteAlbum(id)
+{
+    api.deleteRequest("https://localhost:44313/api/album/", id, displayAllAlbums);
+   
 }
