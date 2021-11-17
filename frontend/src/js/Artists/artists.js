@@ -12,7 +12,7 @@ function viewArtists(){
 
     function displayArtist(data)
     {
-        content.innerHTML = 
+        content.innerHTML =
         `
         <ol>
             ${data.map(artist => "<li> Name: "+artist.name+"</li><ul><li> Record Label: "+artist.recordLabel+"</li><li> Hometown: "+artist.hometown+"</li><li> Age: "+artist.age+"</li></ul>").join(" ")}

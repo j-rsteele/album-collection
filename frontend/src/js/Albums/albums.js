@@ -49,7 +49,7 @@ function displayAllAlbums()
         content.innerHTML =
         `
         <ol>
-            ${data.map(album => '<li>'+album.title+'</li><button class="deleteAlbum" albumID='+album.id+'>Delete</button>').join("")}
+            ${data.map(album => '<li>'+album.title+'</li><ul><li> Artist: '+album.artist.name+'</li><li> Record Label: '+album.recordLabel+'</li><li> Songs: '+album.song+'</li><li> Reviews: '+album.review+'</li><li> Image: ""</li></ul><button class="deleteAlbum" albumID='+album.id+'>Delete</button>').join("")}
         </ol>
         <button id="btnAddAlbum">Add Album</button>
         `
@@ -69,24 +69,6 @@ function displayAllAlbums()
 }
 
 
-
-// function displayAllAlbums()
-// {
-//     title.innerText="Albums";
-//     api.getRequest("https://localhost:44313/api/album", displayAlbums);
-//     function displayAlbums(data)
-//     {
-//         content.innerHTML =
-//         `
-//         <ol>
-//             ${data.map(album => '<li> Title: '+album.title+'</li><button class="deleteButtons" albumId='+album.id+'>Delete</button>').join("")}
-//         </ol>
-//         <button id="btnAddAlbum">Add Album</button>
-//         `
-//         let btnAddAlbum = document.getElementById("btnAddAlbum");
-//         btnAddAlbum.addEventListener("click", viewAddAlbum);
-//     }
-// }
 
 export function SetupSaveButton(selectedArtist)
 {
