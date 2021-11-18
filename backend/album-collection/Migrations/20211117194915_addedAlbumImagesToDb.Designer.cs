@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using album_collection;
 
 namespace album_collection.Migrations
 {
     [DbContext(typeof(AlbumContext))]
-    partial class AlbumContextModelSnapshot : ModelSnapshot
+    [Migration("20211117194915_addedAlbumImagesToDb")]
+    partial class addedAlbumImagesToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +49,7 @@ namespace album_collection.Migrations
                         new
                         {
                             Id = 1,
-                            Image = "/images/prince.webp",
+                            Image = "https://img.discogs.com/R1MLTDCN8NDtFFs5-kiSqosIXKw=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-560791-1278615880.jpeg.jpg",
                             Title = "Paisley Park",
                             artistId = 1,
                             recordLabel = "Atlantic Records"
@@ -55,7 +57,7 @@ namespace album_collection.Migrations
                         new
                         {
                             Id = 2,
-                            Image = "/images/acdc.jpeg",
+                            Image = "https://i.ebayimg.com/images/g/GSoAAOSwJm5cZFgg/s-l300.jpg",
                             Title = "Highway to Hell",
                             artistId = 2,
                             recordLabel = "Atlantic Records"
@@ -63,7 +65,7 @@ namespace album_collection.Migrations
                         new
                         {
                             Id = 3,
-                            Image = "/images/kevingates.jpeg",
+                            Image = "https://upload.wikimedia.org/wikipedia/en/d/dd/KevinGatesIslah.jpg",
                             Title = "Isaiah",
                             artistId = 3,
                             recordLabel = "Atlantic Records"
