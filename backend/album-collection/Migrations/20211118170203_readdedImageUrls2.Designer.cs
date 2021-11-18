@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using album_collection;
 
 namespace album_collection.Migrations
 {
     [DbContext(typeof(AlbumContext))]
-    partial class AlbumContextModelSnapshot : ModelSnapshot
+    [Migration("20211118170203_readdedImageUrls2")]
+    partial class readdedImageUrls2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +65,7 @@ namespace album_collection.Migrations
                         new
                         {
                             Id = 3,
-                            Image = "/images/kevingates.jpeg",
+                            Image = "/images.kevingates.jpeg",
                             Title = "Isaiah",
                             artistId = 3,
                             recordLabel = "Atlantic Records"
