@@ -27,14 +27,14 @@ namespace album_collection
             base.OnModelCreating(modelbuilder);
 
             modelbuilder.Entity<Artist>().HasData(
-                            new Artist() { Id = 1, Name = "Prince", imageUrl = "", Age = 50, recordLabel = "Atlantic Records", Hometown = "Akron" },
-                            new Artist() { Id = 2, Name = "AC/DC", imageUrl = "", Age = 50, recordLabel = "Atlantic Records", Hometown = "Akron" },
-                            new Artist() { Id = 3, Name = "Kevin Gates", imageUrl = "", Age = 50, recordLabel = "Atlantic Records", Hometown = "Akron" });
+                            new Artist() { Id = 1, Name = "Prince", imageUrl = "/images/princeartist.jfif", Age = 57, recordLabel = "Columbia Records", Hometown = "Minnesota" },
+                            new Artist() { Id = 2, Name = "AC/DC", imageUrl = "/images/ACDCbetter.jpeg", Age = 48, recordLabel = "", Hometown = "Sydney" },
+                            new Artist() { Id = 3, Name = "Kevin Gates", imageUrl = "/images/profile.png", Age = 35, recordLabel = "Bread Winners Association", Hometown = "Louisiana" });
             
             modelbuilder.Entity<Album>().HasData(
                             new Album() { Id = 1, Title = "Paisley Park", artistId = 1, Image = "/images/prince.webp", recordLabel = "Atlantic Records"}, 
-                            new Album() { Id = 2, Title = "Highway to Hell", artistId = 2, Image = "/images/acdc.jpeg", recordLabel = "Atlantic Records"},
-                            new Album() { Id = 3, Title = "Isaiah", artistId = 3, Image = "/images/kevingates.jpeg", recordLabel = "Atlantic Records"});
+                            new Album() { Id = 2, Title = "Highway to Hell", artistId = 2, Image = "/images/acdc.jpeg", recordLabel = "EMI"},
+                            new Album() { Id = 3, Title = "Isaiah", artistId = 3, Image = "/images/kevingates.jpeg", recordLabel = "Bread Winners Association"});
 
             modelbuilder.Entity<Song>().HasData(
                                 new Song() { Id = 1, Title = "Paisley Park", albumId = 1},
@@ -42,9 +42,9 @@ namespace album_collection
                                 new Song() { Id = 3, Title = "Time for That", albumId = 3 });
 
             modelbuilder.Entity<Review>().HasData(
-                            new Review() { Id = 1, Name = "Joe Blow", Content = "Nunc aliquet bibendum enim facilisis. Tellus orci ac auctor augue mauris augue neque. Massa ultricies mi quis hendrerit do", AlbumId = 1 },
-                            new Review() { Id = 2, Name = "Seymour Butts", Content = "Nunc aliquet bibendum enim facilisis. Tellus orci ac auctor augue mauris augue neque. Massa ultricies mi quis hendrerit do", AlbumId = 2 },
-                            new Review() { Id = 3, Name = "Joseph Maninng", Content = "Nunc aliquet bibendum enim facilisis. Tellus orci ac auctor augue mauris augue neque. Massa ultricies mi quis hendrerit do", AlbumId = 3 });
+                            new Review() { Id = 1, Name = "Joe Blow", Content = "Amazing album.. One of a kind", AlbumId = 1 },
+                            new Review() { Id = 2, Name = "Seymour Butts", Content = "Whole albums a classic", AlbumId = 2 },
+                            new Review() { Id = 3, Name = "Joseph Maninng", Content = "Incredible beats to every song", AlbumId = 3 });
 
         }
 
