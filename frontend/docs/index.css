@@ -1,6 +1,6 @@
 #title {
     text-align: center;
-    font-family: 'Spartan', sans-serif;
+    font-family: sans-serif;
 }
 
 .box {
@@ -68,7 +68,36 @@ input[type=text], select {
   button {
       margin: 3px;
   }
+  #navbar {
+    font-weight: bold;
+    font-family: sans-serif;
+    flex-flow: row;
+    margin-bottom: .5em;
+    background-color: gold;
+    border-style: double;
+    text-align: center;
+    margin-left: 35em;
+    margin-right: 35em;
+    border-width: .375em;
+    display: flex;
+    width: 8em;
+    justify-content: space-around;
+    padding-right: 2em;
 
+}
+#navbar a:hover{
+    background-color:brown;
+}
+footer{
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+    border-style: double;
+    background-color: gold;
+    margin-left: 25em;
+    margin-right: 25em;
+    border-width: .375em;
+}
 
 
 
