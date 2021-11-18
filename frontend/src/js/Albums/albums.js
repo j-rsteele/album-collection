@@ -43,10 +43,11 @@ function displayAllAlbums()
     api.getRequest("https://localhost:44313/api/album", displayAlbums);
     function displayAlbums(data)
     {
+
         content.innerHTML =
         `
         <ol>
-            ${data.map(album => '<img id="cover"'+album.id+' class="box" src="'+album.image+'"><div id="album"'+album.id+' class="record box"><li>'+album.title+'</li><ul><li> Artist: '+album.artist.name+'</li><li> Record Label: '+album.recordLabel+'</li><li> Songs: '+album.song+'</li><li> Reviews: '+album.review+'</li></ul><button class="editAlbum" albumID='+album.id+'>Edit</button><button class="deleteAlbum" albumID='+album.id+'>Delete</button></div>').join("")}
+            ${data.map(album => '<img id="cover"'+album.id+' class="box" src="'+album.image+'"><div id="album"'+album.id+' class="record box"><li style="text-align:center; font-size: 18px; margin-top: 30px; color: red;">'+album.title+'</li><ul style="padding-top: 10px; color: rgb(192, 36, 36);"><li> Artist: '+album.artist.name+'</li><li> Record Label: '+album.recordLabel+'</li><li> Songs: '+album.song+'</li><li> Reviews: '+album.review+'</li></ul><button class="editAlbum" albumID='+album.id+'>Edit</button><button class="deleteAlbum" albumID='+album.id+'>Delete</button></div>').join("")}
         </ol>
         <button id="btnAddAlbum">Add Album</button>
         `

@@ -83,7 +83,7 @@ export function SetupSaveButton(selectedArtist)
         let artistImage = document.getElementById("artist_image").value;
         let artistRecordLabel = document.getElementById("artist_recordLabel").value;
 
-        const Artist = 
+        const Artist =
         {
             Name: artistName,
             imageUrl: artistImage,
@@ -94,7 +94,7 @@ export function SetupSaveButton(selectedArtist)
         api.postRequest("https://localhost:44313/api/artist", Artist, displayArtist());
     });
 }
-    
+
 function viewEditArtist(id)
 {
     title.innerText = "Edit Artist";
