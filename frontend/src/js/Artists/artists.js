@@ -44,7 +44,7 @@ function viewArtists()
         content.innerHTML =
         `
         <ol>
-            ${data.map(artist => "<li> Name: "+artist.name+"</li><ul><li> Record Label: "+artist.recordLabel+"</li><li> Hometown: "+artist.hometown+"</li><li> Age: "+artist.age+"</li></ul><button class='editArtist' artistID="+artist.id+">Edit</button><button class='deleteArtist' artistID="+artist.id+">Delete</button>").join(" ")}
+            ${data.map(artist => "<img class='artistImage' src='"+artist.imageUrl+"'><li> <h4> Name: "+artist.name+"<h4></li><ul><li> Record Label: "+artist.recordLabel+"</li><li> Hometown: "+artist.hometown+"</li><li> Age: "+artist.age+"</li></ul><button class='editArtist' artistID="+artist.id+">Edit</button><button class='deleteArtist' artistID="+artist.id+">Delete</button>").join(" ")}
         </ol>
         <button id="btnAddArtist">Add Artist</button>
         `
@@ -56,7 +56,6 @@ function viewArtists()
         {
             editButton.addEventListener("click", function()
             {
-                console.log("heloooooo")
                 let id = editButton.getAttribute("artistId");
                 viewEditArtist(id);
              });
