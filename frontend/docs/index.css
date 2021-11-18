@@ -38,7 +38,7 @@ input[type=text], select {
     width: 300px;
     padding: 12px 20px;
     margin: 8px 0;
-    display: flex;
+    display: block;
     align-content: center;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -56,38 +56,48 @@ input[type=text], select {
     cursor: pointer;
   }
 
+  div.addPage{
+      display: block;
+      margin-left: 550px;
+  }
+
+
   .editPage,
   .addPage {
-    background-image: url("./images/record.png");
-    background-size: 1000px;
-    display: inline-block;
-    background-size: 500px;
-    width: 100%;
-    height: auto;
+    /* background-image: url("./images/record.png");
+    background-size: 1000px; */
+    display: block;
+    margin-left: 550px;
   }
 
   button {
       margin: 3px;
   }
-  #navbar {
+
+  #btnAddAlbum {
+      position: relative;
+      left: 50px;
+  }
+
+#navbar {
     font-weight: bold;
     font-family: sans-serif;
     flex-flow: row;
     margin-bottom: .5em;
-    background-color: gold;
+    background-color: rgb(243, 213, 40);
     border-style: double;
     text-align: center;
     margin-left: 35em;
-    margin-right: 35em;
+    margin-right: 10em;
     border-width: .375em;
     display: flex;
+    justify-content: center;
     width: 8em;
-    justify-content: space-around;
-    padding-right: 2em;
+    justify-content: space-around
 
 }
 #navbar a:hover{
-    background-color:brown;
+    /* background-color: rgb(226, 208, 102); */
 }
 footer{
     font-weight: bold;
