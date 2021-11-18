@@ -8,15 +8,19 @@ export default{
 
 export function viewAddAlbum()
 {
+
     title.innerText="Add Album";
     content.innerHTML =
     `
+    <div class="addPage">
         Title <input type="text" value="" id="album_title" />
         Artist <select id="listArtists"> </select>
         ImageURL <input type="text" value="" id="album_image" />
         Record Label <input type="text" value="" id="album_recordLabel" />
         <button id="btnSaveAlbum">Save Album</button>
+        </div>
     `
+
     const artistsSelectList = document.getElementById("listArtists")
 
     //populates select list for artist
@@ -31,6 +35,7 @@ export function viewAddAlbum()
             });
         });
     SetupSaveButton(artistsSelectList)
+
 }
 
 function displayAllAlbums()
