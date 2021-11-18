@@ -11,11 +11,13 @@ export function viewAddArtist()
     title.innerText="Add Artist";
     content.innerHTML =
     `
+    <div class="addPage">
         Name <input type="text" value="" id="artist_name" />
         Artist <select id="listArtists"> </select>
         ImageURL <input type="text" value="" id="artist_image" />
         Record Label <input type="text" value="" id="artist_recordLabel" />
         <button id="btnSaveAlbum">Save Album</button>
+    </div>
     `
     const artistsSelectList = document.getElementById("listArtists")
 
@@ -102,11 +104,13 @@ function viewEditArtist(id)
     {
         content.innerHTML =
         `
+        <div class="editPage">
             Name <input type="text" value="${artist.name}" id="artist_name" />
             Albums <select id="listAlbums"> </select>
             ImageURL <input type="text" value="${artist.image}" id="artist_image" />
             Record Label <input type="text" value="${artist.RecordLabel}" id="artist_recordLabel" />
             <button id="btnSaveEdit">Save Artist</button>
+        </div>
         `
         const artistsSelectList = document.getElementById("listArtists")
         api.getRequest("https://localhost:44313/api/artist", artists =>
