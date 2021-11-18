@@ -1,6 +1,42 @@
-#content
-{
-    background-image: url("/record.png");
-    width:800px;
-    height:300px
+#title {
+    text-align: center;
 }
+
+.box {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-image: url("./images/record.png");
+    background-size: 200px;
+    margin-left: 10px;
+}
+
+#cover.box {
+    margin-top: 50px;
+}
+
+.editAlbum,
+.deleteAlbum {
+    position: relative;
+    right: 210px;
+    top: 100px;
+}
+
+#album.record.box {
+    position: relative;
+    bottom: 80px;
+}
+
+
+
+/* div #album {
+    display: inline-block;
+    width: 500px;
+    height: 200px;
+    background-image: url("./images/record.png");
+    background-size: 200px;
+} */
+
+
+
+/* /docs/images/record.png */

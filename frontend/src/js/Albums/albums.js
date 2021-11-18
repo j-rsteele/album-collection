@@ -28,7 +28,7 @@ export function viewAddAlbum()
                 option.value = artist.id;
                 option.text = artist.name;
                 artistsSelectList.appendChild(option);
-            }); 
+            });
         });
     SetupSaveButton(artistsSelectList)
 }
@@ -42,7 +42,7 @@ function displayAllAlbums()
         content.innerHTML =
         `
         <ol>
-            ${data.map(album => '<img src="/images/prince.webp"><div id=album'+album.id+'><li>'+album.title+'</li><ul><li> Artist: '+album.artist.name+'</li><li> Record Label: '+album.recordLabel+'</li><li> Songs: '+album.song+'</li><li> Reviews: '+album.review+'</li><li> Image: ""</li></ul><button class="editAlbum" albumID='+album.id+'>Edit</button><button class="deleteAlbum" albumID='+album.id+'>Delete</button></div>').join("")}
+            ${data.map(album => '<img id="cover"'+album.id+' class="box" src="'+album.image+'"><div id="album"'+album.id+' class="record box"><li>'+album.title+'</li><ul><li> Artist: '+album.artist.name+'</li><li> Record Label: '+album.recordLabel+'</li><li> Songs: '+album.song+'</li><li> Reviews: '+album.review+'</li></ul><button class="editAlbum" albumID='+album.id+'>Edit</button><button class="deleteAlbum" albumID='+album.id+'>Delete</button></div>').join("")}
         </ol>
         <button id="btnAddAlbum">Add Album</button>
         `
