@@ -56,6 +56,7 @@ input[type=text], select {
     cursor: pointer;
   }
 
+  .editPage,
   .addPage {
     background-image: url("./images/record.png");
     background-size: 1000px;
