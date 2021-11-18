@@ -32,9 +32,9 @@ namespace album_collection
                             new Artist() { Id = 3, Name = "Kevin Gates", imageUrl = "", Age = 50, recordLabel = "Atlantic Records", Hometown = "Akron" });
             
             modelbuilder.Entity<Album>().HasData(
-                            new Album() { Id = 1, Title = "Paisley Park", artistId = 1, Image = "", recordLabel = "Atlantic Records"}, 
-                            new Album() { Id = 2, Title = "Highway to Hell", artistId = 2, Image = "", recordLabel = "Atlantic Records"},
-                            new Album() { Id = 3, Title = "Isaiah", artistId = 3, Image = "", recordLabel = "Atlantic Records"});
+                            new Album() { Id = 1, Title = "Paisley Park", artistId = 1, Image = "/images/prince.webp", recordLabel = "Atlantic Records"}, 
+                            new Album() { Id = 2, Title = "Highway to Hell", artistId = 2, Image = "/images/acdc.jpeg", recordLabel = "Atlantic Records"},
+                            new Album() { Id = 3, Title = "Isaiah", artistId = 3, Image = "/images/kevingates.jpeg", recordLabel = "Atlantic Records"});
 
             modelbuilder.Entity<Song>().HasData(
                                 new Song() { Id = 1, Title = "Paisley Park", albumId = 1},
