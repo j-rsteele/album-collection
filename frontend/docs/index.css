@@ -80,11 +80,6 @@ input[type=text], select {
     margin-left: 35em;
     margin-right: 35em;
     border-width: .375em;
-    display: flex;
-    width: 8em;
-    justify-content: space-around;
-    padding-right: 2em;
-
 }
 #navbar a:hover{
     background-color:brown;
@@ -98,6 +93,9 @@ footer{
     margin-left: 25em;
     margin-right: 25em;
     border-width: .375em;
+}
+body{
+    background-image: url(https://www.newyorkbyrail.com/wp-content/uploads/2018/05/Radio-City-Music-Hall-1200x650.jpg);
 }
 
 
