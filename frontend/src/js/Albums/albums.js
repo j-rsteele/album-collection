@@ -58,7 +58,7 @@ function displayAllAlbums()
         {
             editButton.addEventListener("click", function()
             {
-                let id = editButton.getAttribute("albumId");
+                let id = editButton.getAttribute("albumID");
                 viewEditAlbum(id);
              });
          });
@@ -67,7 +67,7 @@ function displayAllAlbums()
         {
             deleteButton.addEventListener("click", function()
             {
-                let id = deleteButton.getAttribute("albumId");
+                let id = deleteButton.getAttribute("albumID");
                 console.log(id);
                 SetupDeleteAlbum(id);
              });
