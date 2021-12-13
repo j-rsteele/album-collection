@@ -134,7 +134,7 @@ function viewEditArtist(id)
             let artistImage = document.getElementById("artist_image").value;
             let artistRecordLabel = document.getElementById("artist_recordLabel").value;
 
-            const Artist = 
+            const Artist =
             {
                 Id: id,
                 Name: artistTitle,
@@ -145,7 +145,7 @@ function viewEditArtist(id)
             console.log(Artist)
             api.putRequest("https://localhost:44313/api/artist/",id, Artist, viewArtists);
         });
-    });  
+    });
 }
 
 export function setupDeleteArtist(id)

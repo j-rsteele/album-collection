@@ -135,7 +135,7 @@ function viewEditAlbum(id)
                 let albumImage = document.getElementById("album_image").value;
                 let albumRecordLabel = document.getElementById("album_recordLabel").value;
 
-                const Album = 
+                const Album =
                 {
                     Id: id,
                     Title: albumTitle,
